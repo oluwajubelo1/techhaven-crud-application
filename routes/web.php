@@ -19,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[\App\Http\Controllers\ContactController::class,"index"]);
 Route::post('/',[\App\Http\Controllers\ContactController::class,"store"])->name("form.submit");
+
+
+Route::resource('contact',\App\Http\Controllers\MyContactBookController::class);
