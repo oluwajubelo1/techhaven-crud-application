@@ -17,8 +17,14 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/',[\App\Http\Controllers\ContactController::class,"index"]);
-Route::post('/',[\App\Http\Controllers\ContactController::class,"store"])->name("form.submit");
+//Route::middleware(['age'])->group(function () {
+    Route::get('/',[\App\Http\Controllers\ContactController::class,"index"]);
+    Route::post('/',[\App\Http\Controllers\ContactController::class,"store"])->name("form.submit");
 
 
-Route::resource('contact',\App\Http\Controllers\MyContactBookController::class);
+
+    Route::post("/contact/storeform/save",[\App\Http\Controllers\ContactController::class,"store"])->name("contact.storeform")->middleware("age");
+
+    Route::resource('contact',\App\Http\Controllers\MyContactBookController::class);
+//});
+
